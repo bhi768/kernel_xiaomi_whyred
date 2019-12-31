@@ -113,4 +113,7 @@ obj-$(CONFIG_MSM_CACHE_M4M_ERP64) += cache_m4m_erp64.o
 obj-$(CONFIG_MSM_HAB) += hab/
 obj-$(CONFIG_QCOM_QDSS_BRIDGE) += qdss_bridge.o
 obj-$(CONFIG_MFSE_QMI) += mfse_qmi_v01.o mfse_qmi.o
+<<<<<<< HEAD
 obj-y += serial_num.o
+=======
+>>>>>>> 721c794b7bdd... Merge tag 'LA.UM.7.2.r2-03300-8x98.0' into kernel.lnx.4.4.r40-rel
