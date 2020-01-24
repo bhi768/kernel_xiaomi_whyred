@@ -90,6 +90,12 @@ struct gadget_info {
 	bool unbinding;
 	char b_vendor_code;
 	char qw_sign[OS_STRING_QW_SIGN_LEN];
+#ifdef CONFIG_USB_CONFIGFS_UEVENT
+	bool connected;
+	bool sw_connected;
+	struct work_struct work;
+	struct device *dev;
+#endif
 	spinlock_t spinlock;
 	bool unbind;
 };
@@ -1668,6 +1674,10 @@ static void android_disconnect(struct usb_gadget *gadget)
 static const struct usb_gadget_driver configfs_driver_template = {
 	.bind           = configfs_composite_bind,
 	.unbind         = configfs_composite_unbind,
+
+	.setup          = android_setup,
+	.reset          = android_disconnect,
+	.disconnect     = android_disconnect,
 
 	.setup          = configfs_composite_setup,
 	.reset          = configfs_composite_disconnect,
