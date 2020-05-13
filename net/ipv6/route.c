@@ -99,7 +99,7 @@ static void		rt6_dst_from_metrics_check(struct rt6_info *rt);
 static int rt6_score_route(struct rt6_info *rt, int oif, int strict);
 
 #ifdef CONFIG_IPV6_ROUTE_INFO
-static struct rt6_info *rt6_add_route_info(struct net_device *dev,
+static struct rt6_info *rt6_add_route_info(struct net *net,
 					   const struct in6_addr *prefix, int prefixlen,
 					   const struct in6_addr *gwaddr,
 					   struct net_device *dev,
@@ -2275,7 +2275,7 @@ static void ip6_rt_copy_init(struct rt6_info *rt, struct rt6_info *ort)
 }
 
 #ifdef CONFIG_IPV6_ROUTE_INFO
-static struct rt6_info *rt6_get_route_info(struct net_device *dev,
+static struct rt6_info *rt6_get_route_info(struct net *net,
 					   const struct in6_addr *prefix, int prefixlen,
 					   const struct in6_addr *gwaddr,
 					   struct net_device *dev)
@@ -2310,7 +2310,7 @@ out:
 	return rt;
 }
 
-static struct rt6_info *rt6_add_route_info(struct net_device *dev,
+static struct rt6_info *rt6_add_route_info(struct net *net,
 					   const struct in6_addr *prefix, int prefixlen,
 					   const struct in6_addr *gwaddr,
 					   struct net_device *dev,
